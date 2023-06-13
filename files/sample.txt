@@ -1,0 +1,56 @@
+Sample Input
+*S +Noun dogs *VP +Verb bark +Noun wag
+*S +Noun bark +Verb dogs
+*S *NP +Noun tail +Noun dogs +Verb bark
+*S +Noun tail *VP +Verb wag +Noun bark
+*S +Noun bark *VP +Verb wag +Noun dogs
+*S *NP +Noun bark +Noun tail +Verb dogs
+*S +Noun dogs *VP +Verb tail *NP +Noun tail +Noun dogs
+*S +Noun tail *VP +Verb bark +Noun dogs
+*S +Noun wag *VP +Verb bark +Noun tail 
+*S *NP +Noun wag +Noun dogs *VP +Verb bark +Noun tail
+*S +Noun wag *VP +Verb tail *NP +Noun dogs +Noun tail
+*S +Noun dogs +Verb wag
+*S +Noun tail +Verb wag 
+*S +Noun dogs +Verb bark
+*S *NP +Noun dogs +Noun tail *VP +Verb bark +Noun wag
+*S +Noun tail *VP +Verb bark *NP +Noun  dogs +Noun tail
+*S +Noun dogs *VP +Verb wag +Noun tail 
+*S *NP +Noun dogs +Noun tail *VP +Verb wag *NP +Noun bark +Noun tail
+*S +Noun tail *VP +Verb bark +Noun dogs
+*S *NP +Noun dogs +Noun bark +Verb tail 
+
+Sample Output with training size 10 and detailed output
+
+Grammar
+S -> Noun Verb 0.1
+S -> Noun VP 0.6 
+S -> NP Verb 0.2 
+S -> NP VP 0.1 
+NP -> Noun Noun 1   
+VP -> Verb Noun 0.86.
+VP -> Verb NP 0.14
+
+Lexicon
+Noun -> bark  0.14
+Noun -> dogs  0.33
+Noun -> tail  0.33
+Noun -> wag  0.19
+Verb -> bark  0.5 
+Verb -> dogs  0.2 
+Verb -> tail  0.1 
+Verb -> wag  0.2 
+
+Parses
+*S *NP +Noun wag +Noun tail *VP +Verb dogs +Noun tail Wrong
+*S +Noun dogs +Verb wag Right
+*S +Noun tail +Verb wag Right
+*S +Noun dogs +Verb bark Right
+*S *NP +Noun dogs +Noun tail *VP +Verb bark +Noun wag Right
+*S +Noun tail *VP +Verb bark *NP +Noun dogs +Noun tail Right
+*S +Noun dogs *VP +Verb wag +Noun tail Right 
+*S *NP +Noun dogs +Noun tail *VP +Verb wag *NP +Noun bark +Noun tail Right
+*S +Noun tail *VP +Verb bark +Noun dogs Right
+*S +Noun dogs *VP +Verb bark +Noun tail Wrong
+
+Accuracy: The parse was tested on 10 sentences. It got 8 right, for an accuracy of 0.8
